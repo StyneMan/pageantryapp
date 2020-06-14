@@ -1,4 +1,12 @@
+<?php
+include('dbconnect.php');
+session_start();
+
+?>
+
 <?php include('../components/header.php');?>
+
+<?php include('form-validate.php');?>
 
   <!-- Main content -->
   <div class="main-content">
@@ -36,50 +44,55 @@
               </div>
             </div>
             <div class="card-body px-lg-5 py-lg-5">
-              <form role="form">
+              <form role="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
               <div class="already-registered" id="registeredToggle">
                 <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                  <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                     </div>
-                    <input class="form-control" placeholder="First Name" type="text">
+                    <input class="form-control" placeholder="First Name" type="text" name="fname">
                   </div>
+                  <small><span class="font-italic text-danger font-weight-700"><?php echo $fnameErr;?></span></small>
                 </div>
                 <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                  <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Last Name" type="text">
+                    <input class="form-control" placeholder="Last Name" type="text" name="lname">
                   </div>
+                  <small><span class="font-italic text-danger font-weight-700"><?php echo $lnameErr;?></span></small>
                 </div>
               </div>
                 <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                  <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input class="form-control" placeholder="Email" type="email" name="email">
                   </div>
+                  <small><span class="font-italic text-danger font-weight-700"><?php echo $emailErr;?></span></small>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-key-25"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Activation Code" type="text">
+                    <input class="form-control" placeholder="Activation Code" type="text" name="acode">
                   </div>
+                  <small><span class="font-italic text-danger font-weight-700"><?php echo $acodeErr;?></span></small>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input class="form-control" placeholder="Password" type="password" name="password">
                   </div>
+                  <small><span class="font-italic text-danger font-weight-700"><?php echo $passwordErr;?></span></small>
                 </div>
-                <div class="text-muted font-italic"><small>Password Strength: <span class="text-success font-weight-700">strong</span></small></div>
+                <!--<div class="text-muted font-italic"><small>Password Strength: <span class="text-success font-weight-700">strong</span></small></div>-->
               <div class="already-registered" id="registeredToggle1">
                 <hr>
                 <div class="form-group">
@@ -87,35 +100,39 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Phone Number" type="tel">
+                    <input class="form-control" placeholder="Phone Number" type="tel" name="pnumber">
                   </div>
+                  <small><span class="font-italic text-danger font-weight-700"><?php echo $pnumberErr;?></span></small>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">@</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Instagram Handle" aria-label="ighandle" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Instagram Handle" aria-label="ighandle" aria-describedby="basic-addon1" name="ighandle">
                     </div>
+                    <small><span class="font-italic text-danger font-weight-700"><?php echo $ighandleErr;?></span></small>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Residential Address" type="text">
+                    <input class="form-control" placeholder="Residential Address" type="text" name="haddress">
                   </div>
+                  <small><span class="font-italic text-danger font-weight-700"><?php echo $addressErr;?></span></small>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                     </div>
-                    <input class="form-control" type="date" value="2020-06-13" date of birth id="dob">
+                    <input class="form-control" type="date" value="2020-06-13" date of birth id="dob" name="dob">
                   </div>
+                  <small><span class="font-italic text-danger font-weight-700"><?php echo $dobErr;?></span></small>
                 </div>
                 <div class="form-group">
-                  <select class="form-control" id="stateOfOrigin">
+                  <select class="form-control" name="sorigin">
                     <option data-display="State Of Origin">State Of Origin</option>
                     <option value="Abia">Abia</option>
                     <option value="Adamawa">Adamawa</option>
@@ -154,10 +171,11 @@
                     <option value="Taraba">Taraba</option>
                     <option value="Yobe">Yobe</option>
                     <option value="Zamfara">Zamfara</option>
-                  </select>                                      
+                  </select>
+                  <small><span class="font-italic text-danger font-weight-700"><?php echo $soriginErr;?></span></small>                                      
                 </div>
                 <div class="form-group">
-                  <select class="form-control" id="auditionCity">
+                  <select class="form-control" name="acity">
                     <option data-display="Preferred Audition City">Preferred Audition City</option>
                     <option value="Abuja">Abuja</option>
                     <option value="Adamawa">Adamawa</option>
@@ -172,13 +190,14 @@
                     <option value="Kaduna">Kaduna</option>
                     <option value="Lagos">Lagos</option>
                     <option value="Owerri">Owerri</option>
-                  </select>                                      
+                  </select>
+                  <small><span class="font-italic text-danger font-weight-700"><?php echo $acityErr;?></span></small>                                  
                 </div>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFileLang" lang="en">
+                    <input type="file" class="custom-file-input" name="regpic" lang="en">
                     <label class="custom-file-label" for="customFileLang">Select file</label>
+                    <small><span class="font-italic text-danger font-weight-700"><?php echo $regpicErr;?></span></small>
                 </div>
-              </div>
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
@@ -189,8 +208,9 @@
                     </div>
                   </div>
                 </div>
+              </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4">Create account</button>
+                  <button type="submit" class="btn btn-primary mt-4" id="buttonToggle" name="register">Create account</button>
                 </div>
               </form>
             </hr>
@@ -199,7 +219,7 @@
         <div class="row mt-3">
             <div class="col-12 text-center">
               <div class="text-default-color">Already Registered?<br></div>
-              <a href="#" class="text-light"><small>Login Account</small></a>
+              <a href="login" class="text-light"><small>Login Account</small></a>
             </div>
         </div>
       </div>
