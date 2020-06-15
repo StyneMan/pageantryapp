@@ -3,7 +3,7 @@ include('dbconnect.php');
 session_start();
 ?>
 
-<?php include('../components/header.php');?>
+<?php include('./components/header.php');?>
   <!-- Main content -->
   <div class="main-content">
     <!-- Header -->
@@ -31,7 +31,7 @@ session_start();
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4 u">
-                User Portal
+                Contestants Login Portal
               </div>
               <form role="form">
                 <div class="form-group mb-3">
@@ -74,4 +74,4 @@ session_start();
       </div>
     </div>
   </div>
- <?php include('../components/footer.php');?>
+ <?php include('./components/footer.php');?>

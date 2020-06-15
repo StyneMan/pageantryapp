@@ -4,7 +4,7 @@ session_start();
 
 ?>
 
-<?php include('../components/header.php');?>
+<?php include('./components/header.php');?>
 
 <?php include('form-validate.php');?>
 
@@ -226,4 +226,4 @@ session_start();
     </div>
   </div>
 
-<?php include('../components/footer.php');?>
+<?php include('./components/footer.php');?>

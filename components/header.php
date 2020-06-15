@@ -12,10 +12,10 @@
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="./assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Vote Online CSS -->
-  <link rel="stylesheet" href="../assets/css/voteonline.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="./assets/css/voteonline.css?v=1.2.0" type="text/css">
 </head>
 
 <body class="bg-default">
@@ -33,7 +33,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="dashboard.html">
-                <img src="../assets/img/brand/blue.png">
+                <img src="https://i.imgur.com/FcIx9F7.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -47,11 +47,19 @@
         <hr class="d-lg-none" />
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item d-none d-lg-block ml-lg-4">
-            <a href="\" target="_blank" class="btn btn-neutral btn-icon">
+            <a href="./user/login" target="_blank" class="btn btn-neutral btn-icon">
               <span class="btn-inner--icon">
-                <i class="ni ni-align-left-2 mr-2"></i>
+                <i class="ni ni-lock-circle-open mr-2"></i>
               </span>
-              <span class="nav-link-inner--text">Go Back to Home</span>
+              <span class="nav-link-inner--text">Login</span>
+            </a>
+          </li>
+          <li class="nav-item d-none d-lg-block ml-lg-4">
+            <a href="./user/register" target="_blank" class="btn btn-neutral btn-icon">
+              <span class="btn-inner--icon">
+                <i class="ni ni-single-02 mr-2"></i>
+              </span>
+              <span class="nav-link-inner--text">Register</span>
             </a>
           </li>
         </ul>
