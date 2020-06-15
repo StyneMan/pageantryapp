@@ -83,7 +83,7 @@ session_start();
                   </div>
                   <small><span class="font-italic text-danger font-weight-700"><?php echo $acodeErr;?></span></small>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="registeredToggle">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>

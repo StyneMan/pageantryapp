@@ -3347,6 +3347,14 @@ a.text-default-color:focus
     margin-top: 50px;
 }
 
+.old-price{
+    text-decoration: line-through;
+}
+
+.orig-price{
+    font-weight: bold;
+}
+
 .btn-primary
 {
     color: #fff;
