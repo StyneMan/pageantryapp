@@ -23,10 +23,10 @@
     <div class="container mt--8 pb-5">
         <div class="row">
             <div class="col-lg-4 col-md-4">
-                    <div class="card" style="width: 20rem;">
+                    <div class="card">
                         <img class="card-img-top" src="https://i.imgur.com/rDltgLU.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title" style="font-size: 20px;">Regular Ticket</h5>
+                            <h5 class="card-title">Regular Ticket</h5>
                             <p class="price card-text"><span class="old-price">₦10,000</span> <span class="orig-price">₦5,000</span></p>
                             <div class="d-flex flex-row-reverse"><a href="#" class="btn btn-primary">BUY TICKET</a></div>
                         </div>            
@@ -34,10 +34,10 @@
             </div>
 
             <div class="col-lg-4 col-md-4">
-                    <div class="card" style="width: 20rem;">
+                    <div class="card"[>
                         <img class="card-img-top" src="https://i.imgur.com/2eLNKcM.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title" style="font-size: 20px;">VIP Ticket</h5>
+                            <h5 class="card-title">VIP Ticket</h5>
                             <p class="price card-text"><span class="old-price">₦30,000</span> <span class="orig-price">₦20,000</span></p>
                             <div class="d-flex flex-row-reverse"><a href="#" class="btn btn-primary">BUY TICKET</a></div>
                         </div>            
@@ -45,10 +45,10 @@
             </div>
 
             <div class="col-lg-4 col-md-4">
-                    <div class="card" style="width: 20rem;">
+                    <div class="card">
                         <img class="card-img-top" src="https://i.imgur.com/j4GFDmJ.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title" style="font-size: 20px;">Single Table Ticket</h5>
+                            <h5 class="card-title">Single Table Ticket</h5>
                             <p class="price card-text"><span class="old-price">₦150,000</span>  <span class="orig-price">₦100,000</span></p>
                             <div class="d-flex flex-row-reverse"><a href="#" class="btn btn-primary">BUY TICKET</a></div>
                         </div>            

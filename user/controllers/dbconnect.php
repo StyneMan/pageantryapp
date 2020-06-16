@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 //NEW REGISTRATION
 if (isset($_POST['register'])) {
@@ -15,6 +16,7 @@ if (isset($_POST['register'])) {
     $acity = $_POST['acity'];
     $regpic = $_POST['regpic'];
     $pnumber = $_POST['pnumber'];
+    $errors = [];
  
 
     // Create connection
@@ -23,14 +25,23 @@ if (isset($_POST['register'])) {
     $password = "Webify2020!!";
     $dbname = "pageantry_app";
 
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-    //User Registration
+    // Check if email already exists
+    $sql = "SELECT * FROM users WHERE EmailAddress='$email'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0 ) {
+        echo $errors['email'] = "This email already exist";
+    }else {
+        //User Registration
     $query = "INSERT INTO `users`(`FirstName`, `LastName`, `PhoneNumber`, `InstagramHandle`, `Address`, `DateOfBirth`, `StateOfOrigin`, `AuditionCity`, `Image`, `Password`, `EmailAddress`)
     VALUES ('$fname', '$lname', '$pnumber', '$ighandle', '$haddress', '$dob', '$sorigin', '$acity', '$regpic', '$password', '$email')";
 
     $result = mysqli_query ($conn, $query);
+    echo "Registration Successful";
+    exit();
 
+    }  
     // Check connection
     if (!$result) {
         die("Connection failed: " . mysqli_connect_error());

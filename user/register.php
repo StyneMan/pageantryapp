@@ -1,10 +1,16 @@
 <?php
-include('dbconnect.php');
-session_start();
+include('./controllers/dbconnect.php');
 
 ?>
 
 <?php include('./components/header.php');?>
+
+<?php
+// redirect user to login page if they're not logged in
+if (isset($_SESSION['email'])) {
+    header('location: login.php');
+}
+?>
 
 <?php include('form-validate.php');?>
 
