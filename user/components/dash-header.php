@@ -12,11 +12,11 @@
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="./assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
   <!-- Voteoonline CSS -->
-  <link rel="stylesheet" href="../assets/css/voteonline.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="./assets/css/voteonline.css?v=1.2.0" type="text/css">
 </head>
 
 <body>
@@ -41,13 +41,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tables">
+              <a class="nav-link" href="assessments">
                 <i class="ni ni-planet text-primary"></i>
                 <span class="nav-link-text">Assessments</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="examples/map.html">
+              <a class="nav-link" href="documents">
                 <i class="ni ni-folder-17 text-primary"></i>
                 <span class="nav-link-text">Documents</span>
               </a>
@@ -64,8 +64,8 @@
                 <span class="nav-link-text">Statistics</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="settingsDropdown">
-              <a class="dropdown-item" href="admin">Vote</a>
-              <a class="dropdown-item" href="view-contestants">Ticket</a>
+              <a class="dropdown-item" href="vote-stats">Vote</a>
+              <a class="dropdown-item" href="ticket-stats">Ticket</a>
               </div>
             </li>
             <li class="nav-item">
@@ -90,7 +90,7 @@
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
+              <a class="nav-link" href="support" target="_blank">
                 <i class="ni ni-support-16 text-primary"></i>
                 <span class="nav-link-text">Get Support</span>
               </a>
@@ -132,11 +132,11 @@
                 </div>
               </div>
             </li>
-            <li class="nav-item d-sm-none">
+            <!--<li class="nav-item d-sm-none">
               <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
                 <i class="ni ni-zoom-split-in"></i>
               </a>
-            </li>
+            </li>-->
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="ni ni-bell-55"></i>

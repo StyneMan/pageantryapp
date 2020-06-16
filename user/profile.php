@@ -13,7 +13,6 @@
             <h1 class="display-2 text-white" id="greet"></h1> <h2 class="display-2 text-white"><?php echo $name; ?></h2>
             </>
             <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-            <a href="#!" class="btn btn-neutral">Edit profile</a>
           </div>
         </div>
       </div>
@@ -23,12 +22,12 @@
       <div class="row">
         <div class="col-xl-4 order-xl-2">
           <div class="card card-profile">
-            <img src="../assets/img/theme/img-1-1000x600.jpg" alt="Image placeholder" class="card-img-top">
+            <img src="https://i.imgur.com/hy4JBgM.jpg" alt="Image placeholder" class="card-img-top">
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="../assets/img/theme/team-4.jpg" class="rounded-circle">
+                    <img src="https://i.imgur.com/quYTOnx.png" class="rounded-circle">
                   </a>
                 </div>
               </div>
@@ -60,16 +59,19 @@
               </div>
               <div class="text-center">
                 <h5 class="h3">
-                  Jessica Jones<span class="font-weight-light">, 27</span>
+                  Jane Doe<span class="font-weight-light">, 19</span>
                 </h5>
                 <div class="h5 font-weight-300">
                   <i class="ni location_pin mr-2"></i>Bucharest, Romania
                 </div>
                 <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                  <i class="ni business_briefcase-24 mr-2"></i>Contestant Code
                 </div>
-                <div>
-                  <i class="ni education_hat mr-2"></i>University of Computer Science
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" value="TNQ54CC2020" id="conCode" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <div class="input-group-append form-control-muted">
+                    <button class="btn btn-outline-primary" type="button" id="" onclick="myFunction()">Copy</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,10 +82,10 @@
             <div class="card-header">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">Edit profile </h3>
+                  <h3 class="mb-0">My Profile </h3>
                 </div>
                 <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                  <a href="#!" class="btn btn-sm btn-primary">Edit Profile</a>
                 </div>
               </div>
             </div>
