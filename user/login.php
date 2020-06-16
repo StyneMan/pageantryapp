@@ -1,8 +1,8 @@
 <?php
-include('dbconnect.php');
+include('./controllers/dbconnect.php');
+include('./components/header.php');
 ?>
 
-<?php include('./components/header.php');?>
   <!-- Main content -->
   <div class="main-content">
     <!-- Header -->

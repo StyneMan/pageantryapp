@@ -26,7 +26,7 @@
   <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Vote Online JS -->
   <script src="./assets/js/voteonline.js?v=1.2.0"></script>
-  <!-- Form Toggle Switch Start -->
+  <!-- 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     $(document).ready(function(){
@@ -36,15 +36,7 @@
         });
     });
   </script>
-  <!-- Form Toggle Switch End -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
-  <script>
-  $(document).ready(function(){
-      $('#regsuccess').click(function(){            
-      });
-  })
-  </script> 
+-->
 </body>
 
 </html>
