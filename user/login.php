@@ -1,6 +1,5 @@
 <?php
 include('dbconnect.php');
-session_start();
 ?>
 
 <?php include('./components/header.php');?>
