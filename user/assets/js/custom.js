@@ -121,10 +121,10 @@ if (queryParameters().success === "regsuccess"){
         let removePram = window.location.href;
         removePram = window.location.href.split("?")[0];
         window.location.assign(removePram);
-    }, 3000);
+    }, 2000);
     setTimeout(function(){
-        window.location.href = 'login';
-     }, 3000);
+        window.location.href = 'activate-account';
+     }, 2000);
 }
 
 if (queryParameters().error === "regnotsuccess"){

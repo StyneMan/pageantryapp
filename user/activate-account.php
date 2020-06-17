@@ -4,8 +4,6 @@ include('./components/header.php');
 
 ?>
 
-<?php include('form-validate.php');?>
-
   <!-- Main content -->
   <div class="main-content">
     <!-- Header -->

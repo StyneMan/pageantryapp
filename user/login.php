@@ -14,15 +14,14 @@ if (isset($_POST['login'])) {
     $query->bindParam("email", $email, PDO::PARAM_STR);
     $query->execute();
  
-    $result = $query->fetch(PDO::FETCH_ASSOC);
+    $result = $query->setFetchMode(PDO::FETCH_ASSOC);
  
     if (!$result) {
         echo '<p class="error">Email & Password combinations are wrong!</p>';
     } else {
-        if (password_verify($password, $result['password'])) {
-            $_SESSION['user_id'] = $result['id'];
+        if (isset($password, $result['password'])) {
+            $_SESSION['email'] = $result['email'];
             echo '<p class="success">Congratulations, you are logged in!</p>';
-            header("location: dashboard");
         } else {
             echo '<p class="error">Username password combination is wrong!</p>';
         }
