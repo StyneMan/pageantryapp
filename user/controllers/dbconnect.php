@@ -1,6 +1,6 @@
 <?php
 define('USER', 'webify');
-define('PASSWORD', '');
+define('PASSWORD', 'Webify2020!!');
 define('HOST', 'localhost');
 define('DATABASE', 'pageantry_app');
  
