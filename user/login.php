@@ -10,20 +10,26 @@ if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
  
-    $query = $connection->prepare("SELECT * FROM users WHERE EMAIL=:email");
+    $query = $connection->prepare("SELECT * FROM users WHERE email=:email");
     $query->bindParam("email", $email, PDO::PARAM_STR);
     $query->execute();
  
     $result = $query->setFetchMode(PDO::FETCH_ASSOC);
  
     if (!$result) {
-        echo '<p class="error">Email & Password combinations are wrong!</p>';
+      header("Location: ?error=loginwrong");
+      exit();
     } else {
         if (isset($password, $result['password'])) {
+            $_SESSION['user_id'] = $result['id'];
             $_SESSION['email'] = $result['email'];
-            echo '<p class="success">Congratulations, you are logged in!</p>';
+            $_SESSION['password'] = $result['password'];
+            $_SESSION['LoggedIn'] = 1;
+            header("Location: ?success=loginsuccess");
+            exit();
         } else {
-            echo '<p class="error">Username password combination is wrong!</p>';
+          header("Location: ?error=loginnotsuccess");
+          exit();
         }
     }
 }

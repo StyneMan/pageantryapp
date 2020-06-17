@@ -159,6 +159,58 @@ if (queryParameters().error === "regwrong"){
 
 // Registration Modal
 
+// Login Modal
+
+if (queryParameters().success === "loginsuccess"){
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Login successful!',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    setTimeout(function(){
+        let removePram = window.location.href;
+        removePram = window.location.href.split("?")[0];
+        window.location.assign(removePram);
+    }, 2000);
+    setTimeout(function(){
+        window.location.href = 'dashboard';
+     }, 2000);
+}
+
+if (queryParameters().error === "loginnotsuccess"){
+    Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Email & Password combinations are wrong!',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    setTimeout(function(){
+        let removePram = window.location.href;
+        removePram = window.location.href.split("?")[0];
+        window.location.assign(removePram);
+    }, 3000);
+}
+
+if (queryParameters().error === "loginwrong"){
+    Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Something went wrong',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    setTimeout(function(){
+        let removePram = window.location.href;
+        removePram = window.location.href.split("?")[0];
+        window.location.assign(removePram);
+    }, 2000);
+}
+
+// Login Modal
+
 
 if (queryParameters().success === "updated"){
     Swal.fire({
