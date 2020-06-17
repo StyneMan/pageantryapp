@@ -42,7 +42,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="assessments">
-                <i class="ni ni-planet text-primary"></i>
+                <i class="ni ni-archive-2 text-primary"></i>
                 <span class="nav-link-text">Assessments</span>
               </a>
             </li>
@@ -75,7 +75,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="?logout=true">
+              <a class="nav-link" href="./controllers/logout.php">
                 <i class="ni ni-button-power text-danger"></i>
                 <span class="nav-link-text">Logout</span>
               </a>
@@ -320,7 +320,7 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="" class="dropdown-item">
+                <a href="./controllers/logout.php" class="dropdown-item">
                   <i class="ni ni-button-power"></i>
                   <span>Logout</span>
                 </a>

@@ -1,6 +1,34 @@
 <?php
-include('./controllers/dbconnect.php');
 include('./components/header.php');
+include('./controllers/dbconnect.php');
+
+// Initialize the session
+session_start();
+ 
+if (isset($_POST['login'])) {
+ 
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+ 
+    $query = $connection->prepare("SELECT * FROM users WHERE EMAIL=:email");
+    $query->bindParam("email", $email, PDO::PARAM_STR);
+    $query->execute();
+ 
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+ 
+    if (!$result) {
+        echo '<p class="error">Email & Password combinations are wrong!</p>';
+    } else {
+        if (password_verify($password, $result['password'])) {
+            $_SESSION['user_id'] = $result['id'];
+            echo '<p class="success">Congratulations, you are logged in!</p>';
+            header("location: dashboard");
+        } else {
+            echo '<p class="error">Username password combination is wrong!</p>';
+        }
+    }
+}
+
 ?>
 
   <!-- Main content -->
@@ -32,7 +60,7 @@ include('./components/header.php');
               <div class="text-center text-muted mb-4 u">
                 Contestants Login Portal
               </div>
-              <form role="form">
+              <form role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
@@ -56,7 +84,7 @@ include('./components/header.php');
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4">Sign in</button>
+                  <button type="submit" class="btn btn-primary my-4" name="login">Sign in</button>
                 </div>
               </form>
             </div>

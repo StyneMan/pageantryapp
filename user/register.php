@@ -1,6 +1,56 @@
 <?php
-include('./controllers/dbconnect.php');
 include('./components/header.php');
+include('./controllers/dbconnect.php');
+session_start();
+ 
+if (isset($_POST['register'])) {
+ 
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $ighandle = $_POST['ighandle'];
+    $haddress = $_POST['haddress'];
+    $dob = $_POST['dob'];
+    $sorigin = $_POST['sorigin'];
+    $acity = $_POST['acity'];
+    $regpic = $_POST['regpic'];
+    $pnumber = $_POST['pnumber'];
+ 
+    $query = $connection->prepare("SELECT * FROM users WHERE EMAIL=:email");
+    $query->bindParam("email", $email, PDO::PARAM_STR);
+    $query->execute();
+ 
+    if ($query->rowCount() > 0) {
+        echo '<p class="error">The email address is already registered!</p>';
+    }
+ 
+    if ($query->rowCount() == 0) {
+        $query = $connection->prepare("INSERT INTO users(email,password,first_name,last_name,phone_number,instagram_handle,address,date_of_birth,state_of_origin,audition_city,picture) 
+        VALUES (:email,:password_hash,:fname,:lname,:pnumber,:ighandle,:haddress,:dob,:sorigin,:acity,:regpic)");
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
+        $query->bindParam("fname", $fname, PDO::PARAM_STR);
+        $query->bindParam("lname", $lname, PDO::PARAM_STR);
+        $query->bindParam("pnumber", $pnumber, PDO::PARAM_STR);
+        $query->bindParam("ighandle", $ighandle, PDO::PARAM_STR);
+        $query->bindParam("haddress", $haddress, PDO::PARAM_STR);
+        $query->bindParam("dob", $dob, PDO::PARAM_STR);
+        $query->bindParam("sorigin", $sorigin, PDO::PARAM_STR);
+        $query->bindParam("acity", $acity, PDO::PARAM_STR);
+        $query->bindParam("regpic", $regpic, PDO::PARAM_STR);
+        $result = $query->execute();
+ 
+        if ($result) {
+            echo '<p class="success">Your registration was successful!</p>';
+            // Redirect to login page
+            header("location: login");
+        } else {
+            echo '<p class="error">Something went wrong!</p>';
+        }
+    }
+}
 
 ?>
 
@@ -31,11 +81,10 @@ include('./components/header.php');
         <div class="col-lg-6 col-md-8">
           <div class="card bg-secondary border-0">
           <div class="card-header bg-transparent pb-5">
-              <div class="text-muted text-center mt-2 mb-4"><small>Registration For</small></div>
+              <div class="text-muted text-center mt-2 mb-4"><small>Contestants Registration Form</small></div>
           </div>
             <div class="card-body px-lg-5 py-lg-5">
               <form role="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-              <?php include('./controllers/errors.php') ?>
               <div class="already-registered">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
@@ -71,6 +120,14 @@ include('./components/header.php');
                   </div>
                 </div>
                 <!--<div class="text-muted font-italic"><small>Password Strength: <span class="text-success font-weight-700">strong</span></small></div>-->
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Confirm Password" type="password" name="confirm_password">
+                  </div>
+                </div>
               <div class="already-registered">
                 <hr>
                 <div class="form-group">
@@ -163,7 +220,7 @@ include('./components/header.php');
                     <option value="Kaduna">Kaduna</option>
                     <option value="Lagos">Lagos</option>
                     <option value="Owerri">Owerri</option>
-                  </select>                     
+                  </select>                  
                 </div>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" name="regpic" lang="en">
