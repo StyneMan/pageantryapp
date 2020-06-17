@@ -17,13 +17,15 @@ if (isset($_POST['register'])) {
     $acity = $_POST['acity'];
     $regpic = $_POST['regpic'];
     $pnumber = $_POST['pnumber'];
+    $show_modal = false;
  
     $query = $connection->prepare("SELECT * FROM users WHERE EMAIL=:email");
     $query->bindParam("email", $email, PDO::PARAM_STR);
     $query->execute();
  
     if ($query->rowCount() > 0) {
-        echo '<p class="error">The email address is already registered!</p>';
+      header("Location: ?error=regnotsuccess");
+      exit();
     }
  
     if ($query->rowCount() == 0) {
@@ -43,11 +45,11 @@ if (isset($_POST['register'])) {
         $result = $query->execute();
  
         if ($result) {
-            echo '<p class="success">Your registration was successful!</p>';
-            // Redirect to login page
-            header("location: login");
+            header("Location: ?success=regsuccess");
+            exit();
         } else {
-            echo '<p class="error">Something went wrong!</p>';
+            header("Location: ?error=regwrong");
+            exit();
         }
     }
 }
