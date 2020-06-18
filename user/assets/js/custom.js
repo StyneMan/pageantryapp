@@ -123,7 +123,7 @@ if (queryParameters().success === "regsuccess"){
         window.location.assign(removePram);
     }, 2000);
     setTimeout(function(){
-        window.location.href = 'activate-account';
+        window.location.href = 'login';
      }, 2000);
 }
 

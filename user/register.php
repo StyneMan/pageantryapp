@@ -93,7 +93,7 @@ if (isset($_POST['register'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                     </div>
-                    <input class="form-control" placeholder="First Name" type="text" name="fname">
+                    <input class="form-control" placeholder="First Name" pattern="[a-zA-Z]+" required type="text" name="fname">
                   </div>
                 </div>
                 <div class="form-group">
@@ -101,7 +101,7 @@ if (isset($_POST['register'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Last Name" type="text" name="lname">
+                    <input class="form-control" placeholder="Last Name" pattern="[a-zA-Z]+" required type="text" name="lname">
                   </div>
                 </div>
               </div>
@@ -110,7 +110,7 @@ if (isset($_POST['register'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email" name="email">
+                    <input class="form-control" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required type="email" name="email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -118,16 +118,16 @@ if (isset($_POST['register'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password" name="password">
+                    <input class="form-control" id="txtPassword" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required type="password" name="password">
                   </div>
                 </div>
-                <!--<div class="text-muted font-italic"><small>Password Strength: <span class="text-success font-weight-700">strong</span></small></div>-->
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Confirm Password" type="password" name="confirm_password">
+                    <input class="form-control" id="txtConfirmPassword" required placeholder="Confirm Password" type="password" name="confirm_password">
                   </div>
                 </div>
               <div class="already-registered">
@@ -137,7 +137,7 @@ if (isset($_POST['register'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Phone Number" type="tel" name="pnumber">
+                    <input class="form-control" pattern="[0-9]+" minlength="11" required placeholder="Phone Number" type="tel" name="pnumber">
                   </div>
                 </div>
                 <div class="form-group">
@@ -153,7 +153,7 @@ if (isset($_POST['register'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Residential Address" type="text" name="haddress">
+                    <input class="form-control" placeholder="Residential Address" required type="text" name="haddress">
                   </div>
                 </div>
                 <div class="form-group">
@@ -161,11 +161,11 @@ if (isset($_POST['register'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                     </div>
-                    <input class="form-control" type="date" value="2020-06-13" date of birth id="dob" name="dob">
+                    <input class="form-control" type="date" required value="2020-06-13" date of birth id="dob" name="dob">
                   </div>
                 </div>
                 <div class="form-group">
-                  <select class="form-control" name="sorigin">
+                  <select class="form-control" required name="sorigin">
                     <option data-display="State Of Origin">State Of Origin</option>
                     <option value="Abia">Abia</option>
                     <option value="Adamawa">Adamawa</option>
@@ -207,7 +207,7 @@ if (isset($_POST['register'])) {
                   </select>
                 </div>
                 <div class="form-group">
-                  <select class="form-control" name="acity">
+                  <select class="form-control" required name="acity">
                     <option data-display="Preferred Audition City">Preferred Audition City</option>
                     <option value="Abuja">Abuja</option>
                     <option value="Adamawa">Adamawa</option>
@@ -225,13 +225,13 @@ if (isset($_POST['register'])) {
                   </select>                  
                 </div>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="regpic" lang="en">
+                    <input type="file" class="custom-file-input" name="regpic" required lang="en">
                     <label class="custom-file-label" for="customFileLang">Select file</label>
                 </div>
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
-                      <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                      <input class="custom-control-input" required id="customCheckRegister" type="checkbox">
                       <label class="custom-control-label" for="customCheckRegister">
                         <span class="text-muted">I agree with the <a href="#!" style="color: #259dab;">Terms & Conditions</a></span>
                       </label>

@@ -7,10 +7,11 @@ session_start();
  
 if (isset($_POST['login'])) {
  
+    $user_id = $_POST['id'];
     $email = $_POST['email'];
     $password = $_POST['password'];
  
-    $query = $connection->prepare("SELECT * FROM users WHERE email=:email");
+    $query = $connection->prepare("SELECT * FROM users WHERE EMAIL=:email");
     $query->bindParam("email", $email, PDO::PARAM_STR);
     $query->execute();
  
@@ -20,7 +21,7 @@ if (isset($_POST['login'])) {
       header("Location: ?error=loginwrong");
       exit();
     } else {
-        if (isset($password, $result['password'])) {
+        if  (password_verify($password, $result['password'])) {
             $_SESSION['user_id'] = $result['id'];
             $_SESSION['email'] = $result['email'];
             $_SESSION['password'] = $result['password'];
@@ -71,7 +72,7 @@ if (isset($_POST['login'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required placeholder="Email" type="email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -79,7 +80,8 @@ if (isset($_POST['login'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required placeholder="Password" type="password">
                   </div>
                 </div>
                 <div class="custom-control custom-control-alternative custom-checkbox">
