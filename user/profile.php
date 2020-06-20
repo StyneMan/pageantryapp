@@ -1,4 +1,7 @@
-<?php include('./components/dash-header.php');?>
+<?php include('./components/dash-header.php');
+include('./controllers/auth-controller.php');
+
+?>
     <!-- Header -->
     <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(https://i.imgur.com/hy4JBgM.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
@@ -6,11 +9,8 @@
       <!-- Header container -->
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
-          <?php
-          $name = "ThankGod";
-          ?>
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white" id="greet"></h1> <h2 class="display-2 text-white"><?php echo $name; ?></h2>
+            <h1 class="display-2 text-white" id="greet"></h1> <h2 class="display-2 text-white"><?php echo $fname; ?></h2>
             </>
             <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
           </div>
@@ -26,9 +26,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
-                    <img src="https://i.imgur.com/quYTOnx.png" class="rounded-circle">
-                  </a>
+                    <img src="" class="rounded-circle">
                 </div>
               </div>
             </div>
