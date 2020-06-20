@@ -131,7 +131,7 @@ if (queryParameters().error === "regnotsuccess"){
     Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'User alrady exist!',
+        title: 'Email already exist!',
         showConfirmButton: false,
         timer: 3000
     });

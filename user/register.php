@@ -25,6 +25,13 @@ if (isset($_POST['register'])) {
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
 
+  if ($user) { // if user exists
+    if ($user['email'] === $email) {
+      $errors = header("Location: ?error=regnotsuccess");
+      exit();
+    }
+  }
+
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
   	$password = md5($password);//encrypt the password before saving in the database
@@ -33,8 +40,8 @@ if (isset($_POST['register'])) {
   			  VALUES('$email', '$password', '$fname', '$lname', '$pnumber', '$ighandle', '$haddress', '$dob', '$sorigin', '$acity', '$regpic')";
   	mysqli_query($db, $query);
   	$_SESSION['email'] = $email;
-  	$_SESSION['success'] = "You are now logged in";
-  	header('location: login');
+  	$_SESSION['success'] = header("Location: ?success=regsuccess");
+    exit();
   }
 }
 

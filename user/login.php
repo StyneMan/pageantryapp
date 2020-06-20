@@ -3,7 +3,7 @@ include('./components/header.php');
 include('./controllers/dbconnect.php');
 
 // LOGIN USER
-if (isset($_POST['login'])  || isset($_POST['email'])  || isset($_POST['password'])) {
+if (isset($_POST['login'])) {
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
@@ -20,10 +20,11 @@ if (isset($_POST['login'])  || isset($_POST['email'])  || isset($_POST['password
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['email'] = $email;
-  	  $_SESSION['success'] = "You are now logged in";
-  	  header('location: dashboard.php');
+  	  $_SESSION['success'] = header("Location: dashboard");
+      exit();
   	}else {
-  		array_push($errors, "Wrong username/password combination");
+  		$errors = header("Location: ?error=loginnotsuccess");
+      exit();
   	}
   }
 }
@@ -66,7 +67,7 @@ if (isset($_POST['login'])  || isset($_POST['email'])  || isset($_POST['password
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required placeholder="Email" type="email">
+                    <input class="form-control" name="email" required placeholder="Email" type="email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -74,8 +75,7 @@ if (isset($_POST['login'])  || isset($_POST['email'])  || isset($_POST['password
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required placeholder="Password" type="password">
+                    <input class="form-control" name="password" required placeholder="Password" type="password">
                   </div>
                 </div>
                 <div class="custom-control custom-control-alternative custom-checkbox">
