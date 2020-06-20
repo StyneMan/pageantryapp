@@ -47,7 +47,7 @@
         <hr class="d-lg-none" />
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item d-none d-lg-block ml-lg-4">
-            <a href="./user/login" target="_blank" class="btn btn-neutral btn-icon">
+            <a href="./user/login" target="" class="btn btn-neutral btn-icon">
               <span class="btn-inner--icon">
                 <i class="ni ni-lock-circle-open mr-2"></i>
               </span>
@@ -55,7 +55,7 @@
             </a>
           </li>
           <li class="nav-item d-none d-lg-block ml-lg-4">
-            <a href="./user/register" target="_blank" class="btn btn-neutral btn-icon">
+            <a href="./user/register" target="" class="btn btn-neutral btn-icon">
               <span class="btn-inner--icon">
                 <i class="ni ni-single-02 mr-2"></i>
               </span>
