@@ -75,7 +75,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./controllers/logout.php">
+              <a class="nav-link" href="logout.php">
                 <i class="ni ni-button-power text-danger"></i>
                 <span class="nav-link-text">Logout</span>
               </a>
@@ -320,7 +320,7 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="./controllers/logout.php" class="dropdown-item">
+                <a href="logout.php" class="dropdown-item">
                   <i class="ni ni-button-power"></i>
                   <span>Logout</span>
                 </a>
