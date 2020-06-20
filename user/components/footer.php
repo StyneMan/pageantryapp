@@ -40,14 +40,6 @@
     });
   </script>
   <!-- Form Toggle Switch End -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
-  <script>
-  $(document).ready(function(){
-      $('#regsuccess').click(function(){            
-      });
-  })
-  </script>
   <script type="text/javascript">
     window.onload = function () {
         var txtPassword = document.getElementById("txtPassword");
@@ -61,7 +53,7 @@
             }
         }
     }
-</script>
+  </script>
 </body>
 
 </html>

@@ -2,38 +2,32 @@
 include('./components/header.php');
 include('./controllers/dbconnect.php');
 
-// Initialize the session
-session_start();
- 
-if (isset($_POST['login'])) {
- 
-    $user_id = $_POST['id'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
- 
-    $query = $connection->prepare("SELECT * FROM users WHERE EMAIL=:email");
-    $query->bindParam("email", $email, PDO::PARAM_STR);
-    $query->execute();
- 
-    $result = $query->setFetchMode(PDO::FETCH_ASSOC);
- 
-    if (!$result) {
-      header("Location: ?error=loginwrong");
-      exit();
-    } else {
-        if  (password_verify($password, $result['password'])) {
-            $_SESSION['user_id'] = $result['id'];
-            $_SESSION['email'] = $result['email'];
-            $_SESSION['password'] = $result['password'];
-            $_SESSION['LoggedIn'] = 1;
-            header("Location: ?success=loginsuccess");
-            exit();
-        } else {
-          header("Location: ?error=loginnotsuccess");
-          exit();
-        }
-    }
+// LOGIN USER
+if (isset($_POST['login'])  || isset($_POST['email'])  || isset($_POST['password'])) {
+  $email = mysqli_real_escape_string($db, $_POST['email']);
+  $password = mysqli_real_escape_string($db, $_POST['password']);
+
+  if (empty($email)) {
+  	array_push($errors, "Email is required");
+  }
+  if (empty($password)) {
+  	array_push($errors, "Password is required");
+  }
+
+  if (count($errors) == 0) {
+  	$password = md5($password);
+  	$query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+  	  $_SESSION['email'] = $email;
+  	  $_SESSION['success'] = "You are now logged in";
+  	  header('location: dashboard.php');
+  	}else {
+  		array_push($errors, "Wrong username/password combination");
+  	}
+  }
 }
+
 
 ?>
 

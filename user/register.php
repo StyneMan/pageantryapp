@@ -1,58 +1,43 @@
 <?php
 include('./components/header.php');
 include('./controllers/dbconnect.php');
-session_start();
- 
+
+
+// REGISTER USER
 if (isset($_POST['register'])) {
- 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $password_hash = password_hash($password, PASSWORD_BCRYPT);
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $ighandle = $_POST['ighandle'];
-    $haddress = $_POST['haddress'];
-    $dob = $_POST['dob'];
-    $sorigin = $_POST['sorigin'];
-    $acity = $_POST['acity'];
-    $regpic = $_POST['regpic'];
-    $pnumber = $_POST['pnumber'];
-    $show_modal = false;
- 
-    $query = $connection->prepare("SELECT * FROM users WHERE EMAIL=:email");
-    $query->bindParam("email", $email, PDO::PARAM_STR);
-    $query->execute();
- 
-    if ($query->rowCount() > 0) {
-      header("Location: ?error=regnotsuccess");
-      exit();
-    }
- 
-    if ($query->rowCount() == 0) {
-        $query = $connection->prepare("INSERT INTO users(email,password,first_name,last_name,phone_number,instagram_handle,address,date_of_birth,state_of_origin,audition_city,picture) 
-        VALUES (:email,:password_hash,:fname,:lname,:pnumber,:ighandle,:haddress,:dob,:sorigin,:acity,:regpic)");
-        $query->bindParam("email", $email, PDO::PARAM_STR);
-        $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
-        $query->bindParam("fname", $fname, PDO::PARAM_STR);
-        $query->bindParam("lname", $lname, PDO::PARAM_STR);
-        $query->bindParam("pnumber", $pnumber, PDO::PARAM_STR);
-        $query->bindParam("ighandle", $ighandle, PDO::PARAM_STR);
-        $query->bindParam("haddress", $haddress, PDO::PARAM_STR);
-        $query->bindParam("dob", $dob, PDO::PARAM_STR);
-        $query->bindParam("sorigin", $sorigin, PDO::PARAM_STR);
-        $query->bindParam("acity", $acity, PDO::PARAM_STR);
-        $query->bindParam("regpic", $regpic, PDO::PARAM_STR);
-        $result = $query->execute();
- 
-        if ($result) {
-            header("Location: ?success=regsuccess");
-            exit();
-        } else {
-            header("Location: ?error=regwrong");
-            exit();
-        }
-    }
+  // receive all input values from the form
+  $email = mysqli_real_escape_string($db, $_POST['email']);
+  $password = mysqli_real_escape_string($db, $_POST['password']);
+  $fname = mysqli_real_escape_string($db, $_POST['fname']);
+  $lname = mysqli_real_escape_string($db, $_POST['lname']);
+  $pnumber = mysqli_real_escape_string($db, $_POST['pnumber']);
+  $ighandle = mysqli_real_escape_string($db, $_POST['ighandle']);
+  $haddress = mysqli_real_escape_string($db, $_POST['haddress']);
+  $dob = mysqli_real_escape_string($db, $_POST['dob']);
+  $sorigin = mysqli_real_escape_string($db, $_POST['sorigin']);
+  $acity = mysqli_real_escape_string($db, $_POST['acity']);
+  $regpic = mysqli_real_escape_string($db, $_POST['regpic']);
+
+
+  // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors) == 0) {
+  	$password = md5($password);//encrypt the password before saving in the database
+
+  	$query = "INSERT INTO users (email, password, first_name, last_name, phone_number, instagram_handle, address, date_of_birth, state_of_origin, audition_city, picture) 
+  			  VALUES('$email', '$password', '$fname', '$lname', '$pnumber', '$ighandle', '$haddress', '$dob', '$sorigin', '$acity', '$regpic')";
+  	mysqli_query($db, $query);
+  	$_SESSION['email'] = $email;
+  	$_SESSION['success'] = "You are now logged in";
+  	header('location: login');
+  }
 }
+
 
 ?>
 
